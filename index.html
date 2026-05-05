@@ -1,629 +1,1234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GSC · Trial Session · 体验课报告</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ink: #0f1117;
-    --white: #ffffff;
-    --cream: #faf8f4;
-    --teal: #0d5c5c;
-    --teal-mid: #1a7a7a;
-    --teal-light: #e6f3f3;
-    --gold: #b8862c;
-    --gold-light: #f5e6c8;
-    --rule: rgba(15,17,23,.1);
-    --mid: #5c5c6a;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: var(--cream);
-    font-family: 'Jost', sans-serif;
-    color: var(--ink);
-    font-size: 14px;
-    line-height: 1.7;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GSC · Trial Session · 体验课报告</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  /* ─── BILINGUAL PAIR ─── */
-  .bi {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-  }
-  .bi-en { padding-right: 20px; border-right: 1px solid var(--rule); }
-  .bi-zh { padding-left: 20px; }
-  .bi-en p, .bi-zh p { font-size: 13.5px; color: var(--mid); line-height: 1.65; }
-  .lang-tag {
-    font-size: 9px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 6px;
-    opacity: .45;
-  }
+  <style>
+    /* =====================================================
+       GLOBAL STYLES — "Obsidian Prestige" Design System
+       GSC ACAD Trial Session Report
+       ===================================================== */
 
-  /* ─── HERO ─── */
-  .hero { background: var(--teal); padding: 0; overflow: hidden; }
-  .hero-inner { display: grid; grid-template-columns: 1fr 1fr; min-height: 300px; }
-  .hero-left { padding: 52px 48px; position: relative; z-index: 2; }
-  .hero-right {
-    background: var(--teal-mid);
-    padding: 52px 48px;
-    display: flex; flex-direction: column; justify-content: center;
-    position: relative;
-  }
-  .hero-right::before {
-    content: '';
-    position: absolute; left: -1px; top: 10%; bottom: 10%;
-    width: 1px; background: rgba(255,255,255,.15);
-  }
-  .brand-mark {
-    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
-    color: rgba(255,255,255,.45); margin-bottom: 20px;
-  }
-  .brand-mark strong { color: #7ecfcf; }
-  .hero-left h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 36px; font-weight: 600; color: white;
-    line-height: 1.12; margin-bottom: 10px;
-  }
-  .hero-left h1 em { color: #7ecfcf; font-style: italic; }
-  .hero-left .zh-headline {
-    font-size: 22px; color: rgba(255,255,255,.75);
-    font-weight: 300; line-height: 1.35; margin-bottom: 22px;
-  }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
-    border-radius: 4px; padding: 6px 14px;
-    font-size: 12px; color: rgba(255,255,255,.8);
-  }
-  .hero-tag::before { content: '✓'; color: #7ecfcf; font-weight: 700; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  .stat-row { display: flex; flex-direction: column; gap: 22px; }
-  .stat-item { display: flex; align-items: flex-start; gap: 16px; }
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 38px; font-weight: 700; color: #7ecfcf;
-    line-height: 1; min-width: 58px; text-align: right;
-  }
-  .stat-label { font-size: 13px; color: rgba(255,255,255,.7); line-height: 1.45; padding-top: 2px; }
-  .stat-label strong { color: white; display: block; font-size: 14px; margin-bottom: 1px; }
-  .stat-label .stat-zh { font-size: 11.5px; color: rgba(255,255,255,.45); display: block; margin-top: 2px; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  /* ─── SECTION WRAPPERS ─── */
-  .section { padding: 48px 56px; }
-  .section.alt { background: var(--teal-light); }
-  .section.dark { background: var(--ink); color: white; }
-  .section-head {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 0; margin-bottom: 28px;
-    border-bottom: 1.5px solid var(--ink); padding-bottom: 12px;
-  }
-  .section.dark .section-head { border-bottom-color: rgba(255,255,255,.15); }
-  .section-head-en h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px; font-weight: 700;
-  }
-  .section-head-en { padding-right: 20px; border-right: 1px solid var(--rule); }
-  .section.dark .section-head-en { border-right-color: rgba(255,255,255,.1); }
-  .section-head-zh { padding-left: 20px; display: flex; align-items: center; }
-  .section-head-zh h2 {
-    font-size: 20px; font-weight: 400; color: var(--mid); line-height: 1.3;
-  }
-  .section.dark .section-head-zh h2 { color: rgba(255,255,255,.45); }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: #0A0B0E;
+      color: #F0EDE8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+    }
 
-  /* ─── TIMELINE MINI ─── */
-  .timeline-mini { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 8px; }
-  .tmi-card {
-    background: white; border: 1px solid var(--rule);
-    border-top: 3px solid var(--teal); border-radius: 0 0 8px 8px; padding: 18px 20px;
-  }
-  .tmi-card.gold-top { border-top-color: var(--gold); }
-  .tmi-time { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); margin-bottom: 4px; }
-  .tmi-title { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 700; margin-bottom: 2px; }
-  .tmi-zh-title { font-size: 13px; color: var(--teal); font-weight: 600; margin-bottom: 8px; }
-  .tmi-bi { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
-  .tmi-bi .lang-tag { color: var(--mid); }
-  .tmi-bi p { font-size: 12px; color: var(--mid); line-height: 1.5; }
+    /* ── Container ── */
+    .container {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
 
-  /* ─── ACE CARDS ─── */
-  .ace-parent { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 8px; }
-  .ace-p-card { background: white; border-radius: 10px; padding: 24px; position: relative; }
-  .ace-p-card .big-letter {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 64px; font-weight: 700; color: var(--teal-light);
-    position: absolute; right: 16px; top: 8px; line-height: 1;
-  }
-  .ace-p-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--teal); }
-  .ace-p-card .ace-zh-title { font-size: 14px; font-weight: 600; color: var(--gold); margin-bottom: 12px; }
-  .ace-p-card .ace-bi { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .ace-p-card .ace-bi p { font-size: 12px; color: var(--mid); line-height: 1.55; }
+    @media (min-width: 640px) {
+      .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
 
-  /* ─── TRANSFORM SPLIT ─── */
-  .transform-split {
-    display: grid; grid-template-columns: 1fr 1fr;
-    border: 1.5px solid var(--rule); border-radius: 10px; overflow: hidden; margin: 16px 0;
-  }
-  .ts-before { background: #f5f0ea; padding: 24px 28px; }
-  .ts-after { background: var(--teal); color: white; padding: 24px 28px; }
-  .ts-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; margin-bottom: 8px; }
-  .ts-before .ts-label { color: var(--mid); }
-  .ts-after .ts-label { color: #7ecfcf; }
-  .ts-title-pair { margin-bottom: 12px; }
-  .ts-title-pair h3 { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; }
-  .ts-before .ts-title-pair h3 { color: var(--mid); }
-  .ts-after .ts-title-pair h3 { color: white; }
-  .ts-title-pair .zh-h3 { font-size: 13px; margin-top: 2px; }
-  .ts-before .zh-h3 { color: var(--mid); opacity: .7; }
-  .ts-after .zh-h3 { color: rgba(255,255,255,.55); }
-  .ts-list { list-style: none; padding: 0; }
-  .ts-list li { font-size: 13px; padding: 5px 0 5px 20px; position: relative; border-bottom: 1px solid rgba(0,0,0,.05); }
-  .ts-after .ts-list li { border-bottom-color: rgba(255,255,255,.08); }
-  .ts-list li:last-child { border-bottom: none; }
-  .ts-before .ts-list li { color: var(--mid); }
-  .ts-before .ts-list li::before { content: '✕'; position: absolute; left: 0; color: #c0392b; font-size: 11px; top: 7px; }
-  .ts-after .ts-list li { color: rgba(255,255,255,.85); }
-  .ts-after .ts-list li::before { content: '✓'; position: absolute; left: 0; color: #7ecfcf; font-size: 11px; top: 7px; }
-  .ts-list li .zh-li { display: block; font-size: 11.5px; opacity: .65; margin-top: 1px; }
+    @media (min-width: 1024px) {
+      .container {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        max-width: 1320px;
+      }
+    }
 
-  /* ─── PROGRAM PHASES ─── */
-  .track-phases { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 8px; }
-  .tp-card {
-    border-radius: 10px; padding: 24px;
-    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
-  }
-  .tp-card.active { background: rgba(255,255,255,.12); border-color: #7ecfcf; }
-  .tp-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 42px; font-weight: 700; color: rgba(255,255,255,.2); line-height: 1; margin-bottom: 4px;
-  }
-  .tp-card.active .tp-num { color: #7ecfcf; }
-  .tp-en-title { font-size: 14px; font-weight: 600; color: white; margin-bottom: 2px; }
-  .tp-zh-title { font-size: 13px; color: rgba(255,255,255,.5); margin-bottom: 6px; }
-  .tp-card.active .tp-zh-title { color: #7ecfcf; }
-  .tp-sessions { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-  .tp-bi { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .tp-bi p { font-size: 11.5px; color: rgba(255,255,255,.55); line-height: 1.5; }
-  .tp-tag {
-    display: inline-block; background: #7ecfcf; color: var(--ink);
-    font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-    padding: 3px 8px; border-radius: 3px; margin-top: 12px;
-  }
+    /* ── Typography ── */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+    }
 
-  /* ─── OUTCOMES ─── */
-  .outcomes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
-  .oc-card {
-    background: white; border-radius: 10px; padding: 22px 24px;
-    border-left: 4px solid var(--teal);
-  }
-  .oc-title-row { margin-bottom: 10px; }
-  .oc-title-row h5 { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; color: var(--teal); }
-  .oc-title-row .oc-zh-title { font-size: 13px; color: var(--gold); font-weight: 500; margin-top: 1px; }
-  .oc-bi { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .oc-bi p { font-size: 12px; color: var(--mid); line-height: 1.55; }
+    .section-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: rgba(201, 168, 76, 0.5);
+      text-transform: uppercase;
+    }
 
-  /* ─── CTA BAR ─── */
-  .cta-bar {
-    background: var(--gold); padding: 44px 56px;
-    display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 32px;
-  }
-  .cta-text-bi { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
-  .cta-en h2 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 700; color: var(--ink); line-height: 1.2; }
-  .cta-en p { font-size: 13px; color: rgba(15,17,23,.6); margin-top: 6px; }
-  .cta-zh h2 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: var(--ink); line-height: 1.3; }
-  .cta-zh p { font-size: 12px; color: rgba(15,17,23,.55); margin-top: 6px; }
-  .cta-divider { width: 1px; background: rgba(15,17,23,.15); align-self: stretch; }
+    .stat-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-variant-numeric: tabular-nums;
+    }
 
-  .cta-btn {
-    background: var(--ink); color: white;
-    padding: 16px 30px; border-radius: 6px;
-    font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
-    text-align: center; white-space: nowrap; cursor: pointer;
-    text-decoration: none; display: block;
-    transition: background .2s;
-  }
-  .cta-btn:hover { background: #1a2235; }
-  .cta-btn .btn-zh { font-size: 12px; opacity: .7; margin-top: 4px; font-weight: 400; letter-spacing: 0; text-transform: none; }
+    /* ── Colors & Gradients ── */
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #C9A84C 0%, #E8C96A 40%, #C9A84C 70%, #A8843C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-  /* ─── FOOTER ─── */
-  .footer-bar {
-    background: #090c10; padding: 32px 56px;
-    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: center;
-  }
-  .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: white; }
-  .footer-brand span { color: var(--gold); }
-  .footer-brand .footer-brand-zh { font-size: 13px; color: rgba(255,255,255,.35); font-family: 'Jost', sans-serif; font-weight: 300; margin-top: 3px; }
-  .footer-contact { font-size: 12px; color: rgba(255,255,255,.5); line-height: 1.9; }
-  .footer-contact strong { color: rgba(255,255,255,.8); }
-  .footer-note { font-size: 11px; color: rgba(255,255,255,.3); text-align: right; line-height: 1.7; }
+    .animate-shimmer {
+      background: linear-gradient(
+        90deg,
+        #C9A84C 0%,
+        #F0D878 25%,
+        #E8C96A 50%,
+        #F0D878 75%,
+        #C9A84C 100%
+      );
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+    }
 
-  /* ─── DIVIDER ─── */
-  .bi-divider {
-    width: 1px; background: var(--rule); margin: 0 20px;
-    align-self: stretch;
-  }
+    .hairline-gold {
+      height: 1px;
+      background: linear-gradient(90deg, rgba(201, 168, 76, 0.6), rgba(201, 168, 76, 0.1));
+      flex-shrink: 0;
+    }
 
-  @media (max-width: 720px) {
-    .hero-inner, .timeline-mini, .ace-parent, .track-phases, .outcomes-grid,
-    .cta-bar, .footer-bar, .bi, .tmi-bi, .ace-bi, .tp-bi, .oc-bi,
-    .section-head, .cta-text-bi { grid-template-columns: 1fr; }
-    .transform-split { grid-template-columns: 1fr; }
-    .bi-en, .section-head-en { border-right: none; padding-right: 0; border-bottom: 1px solid var(--rule); padding-bottom: 12px; margin-bottom: 12px; }
-    .bi-zh, .section-head-zh { padding-left: 0; }
-    .section { padding: 32px 22px; }
-    .cta-bar { padding: 32px 22px; }
-    .footer-bar { padding: 24px 22px; }
-    .footer-note { text-align: left; }
-  }
-</style>
+    .card-gold {
+      background: rgba(17, 19, 24, 0.7);
+      border: 1px solid rgba(201, 168, 76, 0.18);
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+    }
+
+    .card-gold:hover {
+      border-color: rgba(201, 168, 76, 0.35);
+      box-shadow: 0 0 30px rgba(201, 168, 76, 0.1), inset 0 0 30px rgba(201, 168, 76, 0.03);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #C9A84C 0%, #E8C96A 50%, #C9A84C 100%);
+      background-size: 200% auto;
+      color: #0A0B0E;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      padding: 0.75rem 1.25rem;
+      border-radius: 9999px;
+    }
+
+    .btn-gold:hover {
+      background-position: right center;
+      box-shadow: 0 8px 40px rgba(201, 168, 76, 0.5);
+      transform: translateY(-2px);
+    }
+
+    /* ── Animations ── */
+    @keyframes shimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-float-delayed {
+      animation: float 8s ease-in-out 2s infinite;
+    }
+
+    .animate-float-slow {
+      animation: float 10s ease-in-out 4s infinite;
+    }
+
+    /* ── Scroll Reveal ── */
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.94);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-up.revealed,
+    .reveal-left.revealed,
+    .reveal-right.revealed,
+    .reveal-scale.revealed {
+      opacity: 1;
+      transform: none;
+    }
+
+    .delay-100 { transition-delay: 0.1s; }
+    .delay-150 { transition-delay: 0.15s; }
+    .delay-200 { transition-delay: 0.2s; }
+    .delay-300 { transition-delay: 0.3s; }
+    .delay-400 { transition-delay: 0.4s; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0A0B0E;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(201, 168, 76, 0.3);
+      border-radius: 2px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(201, 168, 76, 0.5);
+    }
+
+    ::selection {
+      background: rgba(201, 168, 76, 0.2);
+      color: #F0EDE8;
+    }
+
+    /* ── Utility Classes ── */
+    .flex {
+      display: flex;
+    }
+
+    .flex-col {
+      flex-direction: column;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .items-start {
+      align-items: flex-start;
+    }
+
+    .justify-between {
+      justify-content: space-between;
+    }
+
+    .justify-center {
+      justify-content: center;
+    }
+
+    .gap-2 {
+      gap: 0.5rem;
+    }
+
+    .gap-3 {
+      gap: 0.75rem;
+    }
+
+    .gap-4 {
+      gap: 1rem;
+    }
+
+    .gap-6 {
+      gap: 1.5rem;
+    }
+
+    .grid {
+      display: grid;
+    }
+
+    .grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .mb-1 { margin-bottom: 0.25rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-3 { margin-bottom: 0.75rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mb-8 { margin-bottom: 2rem; }
+    .mb-12 { margin-bottom: 3rem; }
+    .mb-16 { margin-bottom: 4rem; }
+
+    .mt-2 { margin-top: 0.5rem; }
+    .mt-4 { margin-top: 1rem; }
+    .mt-6 { margin-top: 1.5rem; }
+    .mt-10 { margin-top: 2.5rem; }
+    .mt-12 { margin-top: 3rem; }
+    .mt-16 { margin-top: 4rem; }
+
+    .p-3 { padding: 0.75rem; }
+    .p-4 { padding: 1rem; }
+    .p-6 { padding: 1.5rem; }
+    .p-7 { padding: 1.75rem; }
+    .p-8 { padding: 2rem; }
+
+    .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+    .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+    .px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .px-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
+
+    .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+    .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+    .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+    .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+    .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+    .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+    .py-28 { padding-top: 7rem; padding-bottom: 7rem; }
+    .py-32 { padding-top: 8rem; padding-bottom: 8rem; }
+
+    .pt-24 { padding-top: 6rem; }
+    .pb-16 { padding-bottom: 4rem; }
+
+    .rounded { border-radius: 0.25rem; }
+    .rounded-lg { border-radius: 0.5rem; }
+    .rounded-xl { border-radius: 0.75rem; }
+    .rounded-2xl { border-radius: 1rem; }
+    .rounded-full { border-radius: 9999px; }
+
+    .w-2 { width: 0.5rem; }
+    .w-4 { width: 1rem; }
+    .w-5 { width: 1.25rem; }
+    .w-6 { width: 1.5rem; }
+    .w-7 { width: 1.75rem; }
+    .w-8 { width: 2rem; }
+    .w-10 { width: 2.5rem; }
+    .w-12 { width: 3rem; }
+    .w-16 { width: 4rem; }
+    .w-24 { width: 6rem; }
+    .w-32 { width: 8rem; }
+    .w-48 { width: 12rem; }
+    .w-px { width: 1px; }
+    .w-full { width: 100%; }
+
+    .h-2 { height: 0.5rem; }
+    .h-4 { height: 1rem; }
+    .h-5 { height: 1.25rem; }
+    .h-6 { height: 1.5rem; }
+    .h-7 { height: 1.75rem; }
+    .h-8 { height: 2rem; }
+    .h-10 { height: 2.5rem; }
+    .h-12 { height: 3rem; }
+    .h-16 { height: 4rem; }
+    .h-24 { height: 6rem; }
+    .h-32 { height: 8rem; }
+    .h-48 { height: 12rem; }
+    .h-px { height: 1px; }
+    .h-screen { height: 100vh; }
+
+    .max-w-2xl { max-width: 42rem; }
+    .max-w-6xl { max-width: 72rem; }
+
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    .opacity-20 { opacity: 0.2; }
+    .opacity-25 { opacity: 0.25; }
+    .opacity-30 { opacity: 0.3; }
+
+    .relative { position: relative; }
+    .absolute { position: absolute; }
+    .fixed { position: fixed; }
+    .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+    .top-0 { top: 0; }
+    .top-4 { top: 1rem; }
+    .top-8 { top: 2rem; }
+    .top-20 { top: 5rem; }
+    .top-1-2 { top: 50%; }
+    .bottom-0 { bottom: 0; }
+    .bottom-8 { bottom: 2rem; }
+    .bottom-32 { bottom: 8rem; }
+    .left-0 { left: 0; }
+    .left-1-2 { left: 50%; }
+    .left-6 { left: 1.5rem; }
+    .left-8 { left: 2rem; }
+    .left-20 { left: 5rem; }
+    .right-0 { right: 0; }
+    .right-4 { right: 1rem; }
+    .right-6 { right: 1.5rem; }
+    .right-16 { right: 4rem; }
+    .right-1-4 { right: 25%; }
+
+    .z-10 { z-index: 10; }
+    .z-50 { z-index: 50; }
+
+    .overflow-hidden { overflow: hidden; }
+
+    .pointer-events-none { pointer-events: none; }
+
+    .transition-all { transition: all 0.3s ease; }
+    .transition-colors { transition: color 0.3s ease, background-color 0.3s ease; }
+
+    .duration-300 { transition-duration: 300ms; }
+    .duration-500 { transition-duration: 500ms; }
+
+    .space-y-3 > * + * { margin-top: 0.75rem; }
+    .space-y-4 > * + * { margin-top: 1rem; }
+    .space-y-6 > * + * { margin-top: 1.5rem; }
+    .space-y-12 > * + * { margin-top: 3rem; }
+
+    .will-change-transform { will-change: transform; }
+
+    .hidden { display: none; }
+
+    @media (max-width: 768px) {
+      .hidden-mobile { display: none; }
+      .md\:inline-flex { display: none; }
+      .md\:grid-cols-2 { grid-template-columns: 1fr; }
+      .md\:grid-cols-3 { grid-template-columns: 1fr; }
+      .md\:flex-row { flex-direction: column; }
+      .md\:text-right { text-align: left; }
+      .md\:block { display: none; }
+    }
+
+    @media (min-width: 768px) {
+      .md\:inline-flex { display: inline-flex; }
+      .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .md\:flex-row { flex-direction: row; }
+      .md\:text-right { text-align: right; }
+      .md\:block { display: block; }
+      .md\:gap-10 { gap: 2.5rem; }
+    }
+
+    /* ── Responsive Typography ── */
+    .text-xs { font-size: 0.75rem; }
+    .text-sm { font-size: 0.875rem; }
+    .text-base { font-size: 1rem; }
+    .text-lg { font-size: 1.125rem; }
+    .text-xl { font-size: 1.25rem; }
+    .text-2xl { font-size: 1.5rem; }
+    .text-3xl { font-size: 1.875rem; }
+    .text-4xl { font-size: 2.25rem; }
+    .text-5xl { font-size: 3rem; }
+    .text-6xl { font-size: 3.75rem; }
+    .text-7xl { font-size: 4.5rem; }
+
+    .font-300 { font-weight: 300; }
+    .font-400 { font-weight: 400; }
+    .font-500 { font-weight: 500; }
+    .font-600 { font-weight: 600; }
+    .font-700 { font-weight: 700; }
+    .font-800 { font-weight: 800; }
+
+    .font-bold { font-weight: 700; }
+    .font-semibold { font-weight: 600; }
+
+    .leading-none { line-height: 1; }
+    .leading-tight { line-height: 1.25; }
+    .leading-snug { line-height: 1.375; }
+    .leading-normal { line-height: 1.5; }
+    .leading-relaxed { line-height: 1.625; }
+    .leading-loose { line-height: 2; }
+
+    .tracking-widest { letter-spacing: 0.2em; }
+    .uppercase { text-transform: uppercase; }
+    .lowercase { text-transform: lowercase; }
+
+    .text-center { text-align: center; }
+    .text-left { text-align: left; }
+    .text-right { text-align: right; }
+
+    .italic { font-style: italic; }
+
+    .border { border: 1px solid rgba(255, 255, 255, 0.1); }
+    .border-t { border-top: 1px solid rgba(255, 255, 255, 0.1); }
+
+    .min-h-screen { min-height: 100vh; }
+
+    .flex-shrink-0 { flex-shrink: 0; }
+    .flex-1 { flex: 1 1 0%; }
+
+    .cursor-default { cursor: default; }
+    .cursor-pointer { cursor: pointer; }
+
+    /* ── Specific Responsive ── */
+    @media (max-width: 768px) {
+      .grid-cols-3 {
+        grid-template-columns: 1fr;
+      }
+      .grid-cols-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<!-- ═══ HERO ═══ -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-left">
-      <div class="brand-mark">Global Success Center · <strong>ACAD Track</strong> · Trial Session Report · 体验课报告</div>
-      <h1>Today, Your Child<br>Found Their <em>Voice.</em></h1>
-      <div class="zh-headline">今天，您的孩子<br>找到了属于自己的<em style="color:#7ecfcf;font-style:italic;">表达力</em></div>
-      <div class="hero-tag">Here's exactly what happened in 60 minutes · 60分钟内发生的一切</div>
-    </div>
-    <div class="hero-right">
-      <div class="stat-row">
-        <div class="stat-item">
-          <div class="stat-num">1</div>
-          <div class="stat-label">
-            <strong>Framework Learned · 掌握一套框架</strong>
-            A complete speaking architecture they now own — for class, for exams, for every moment that counts.
-            <span class="stat-zh">一套完整的表达架构，适用于课堂、考试以及每一个关键时刻。</span>
-          </div>
+  <nav id="navbar" style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: all 0.5s ease; background: transparent; border-bottom: 1px solid transparent;">
+    <div class="container flex items-center justify-between py-4">
+      <div class="flex items-center gap-2">
+        <div style="width: 1.75rem; height: 1.75rem; border-radius: 0.375rem; display: flex; align-items: center; justify-content: center; background: rgba(201, 168, 76, 0.12); border: 1px solid rgba(201, 168, 76, 0.25);">
+          <span style="color: #C9A84C; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.85rem;">G</span>
         </div>
-        <div class="stat-item">
-          <div class="stat-num">2×</div>
-          <div class="stat-label">
-            <strong>Same Question, Two Speeches · 同一问题，两次作答</strong>
-            Once without tools. Once with. The difference was visible to everyone in the room.
-            <span class="stat-zh">第一次没有工具，第二次运用框架。所有人都能看到那个转变。</span>
-          </div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">60</div>
-          <div class="stat-label">
-            <strong>Minutes to Transformation · 分钟内的蜕变</strong>
-            Not motivation. A structural skill — trained, practiced, and performed today.
-            <span class="stat-zh">这不是鼓励演讲，而是一项经过训练和实践的结构化技能。</span>
-          </div>
+        <div>
+          <div style="color: #F0EDE8; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.02em;">Global Success Center</div>
+          <div style="color: rgba(201, 168, 76, 0.5); font-family: 'JetBrains Mono', monospace; font-size: 0.5rem; letter-spacing: 0.15em;">ACAD TRACK · TRIAL SESSION</div>
         </div>
       </div>
+      <a href="#cta" class="btn-gold hidden-mobile" style="display: none;" onclick="document.getElementById('cta').scrollIntoView({behavior: 'smooth'}); return false;">
+        <span>Enroll Now · 立即报名</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left: 0.5rem;">
+          <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
     </div>
-  </div>
-</div>
+  </nav>
 
-<!-- ═══ WHAT HAPPENED TODAY ═══ -->
-<div class="section">
-  <div class="section-head">
-    <div class="section-head-en"><h2>What Happened Today</h2></div>
-    <div class="section-head-zh"><h2>今天课堂发生了什么</h2></div>
-  </div>
+  <!-- HERO SECTION -->
+  <section id="hero" style="position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; overflow: hidden; background: #0A0B0E;">
+    <div class="hero-bg" style="position: absolute; inset: 0; background-image: url('https://d2xsxph8kpxj0f.cloudfront.net/310519663628649363/TpgXn7rmUL8AtPoBRmKF84/hero-bg-6i2VGYnxBdngBQCRKUFKVo.webp'); background-size: cover; background-position: center; opacity: 0.55; scale: 1.1; will-change: transform;"></div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10, 11, 14, 0.85) 0%, rgba(10, 11, 14, 0.5) 50%, rgba(10, 11, 14, 0.9) 100%);"></div>
 
-  <div class="timeline-mini">
-    <div class="tmi-card">
-      <div class="tmi-time">Minutes 0–15 · 第0–15分钟</div>
-      <div class="tmi-title">The Cold Open + Diagnosis</div>
-      <div class="tmi-zh-title">开场挑战 + 问题诊断</div>
-      <div class="tmi-bi">
-        <p>Your child spoke unassisted on a real question — no prep, no framework. We identified the true source of speaking anxiety: not vocabulary, but <strong>structure</strong>.</p>
-        <p>孩子在没有任何准备的情况下直接开口。我们识别出了表达焦虑的真正根源：不是词汇，而是<strong>结构</strong>的缺失。</p>
+    <!-- Floating orbs -->
+    <div class="hero-floater animate-float" style="position: absolute; top: 5rem; right: 4rem; width: 8rem; height: 8rem; border-radius: 9999px; opacity: 0.3; background: radial-gradient(circle, rgba(201, 168, 76, 0.4) 0%, transparent 70%); filter: blur(20px); transition: transform 0.1s ease-out;"></div>
+    <div class="hero-floater animate-float-delayed" style="position: absolute; bottom: 8rem; left: 5rem; width: 12rem; height: 12rem; border-radius: 9999px; opacity: 0.2; background: radial-gradient(circle, rgba(74, 158, 255, 0.4) 0%, transparent 70%); filter: blur(30px); transition: transform 0.1s ease-out;"></div>
+    <div class="hero-floater animate-float-slow" style="position: absolute; top: 50%; right: 25%; width: 6rem; height: 6rem; border-radius: 9999px; opacity: 0.25; background: radial-gradient(circle, rgba(201, 168, 76, 0.3) 0%, transparent 70%); filter: blur(15px); transition: transform 0.1s ease-out;"></div>
+
+    <div class="container relative z-10 pt-24 pb-16">
+      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2.5rem; animation: fadeInDown 0.8s ease forwards;">
+        <div class="hairline-gold" style="width: 40px;"></div>
+        <span class="section-number" style="color: rgba(201, 168, 76, 0.7); font-size: 0.65rem;">Global Success Center · ACAD Track · Trial Session Report · 体验课报告</span>
       </div>
-    </div>
-    <div class="tmi-card">
-      <div class="tmi-time">Minutes 15–50 · 第15–50分钟</div>
-      <div class="tmi-title">Framework Teaching + Coached Rounds</div>
-      <div class="tmi-zh-title">框架学习 + 实战演练</div>
-      <div class="tmi-bi">
-        <p>We introduced the <strong>ACE Method</strong> — the same 3-part architecture used by debate champions and TED speakers. Students practiced, were coached one-on-one, and spoke again with precision.</p>
-        <p>我们介绍了<strong>ACE方法</strong>——一套辩论冠军与TED演讲者共同使用的三步表达架构。学生练习、获得一对一指导，然后带着精准度再次开口。</p>
+
+      <div style="animation: fadeInUp 1s ease 0.2s both;">
+        <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 7rem); color: #F0EDE8; font-weight: 700; letter-spacing: -0.02em; line-height: 1; margin-bottom: 1rem;">
+          Today, Your Child<br />Found Their <em class="animate-shimmer" style="font-style: italic;">Voice.</em>
+        </h1>
+
+        <p style="font-family: 'DM Sans', sans-serif; font-size: clamp(1.1rem, 2.5vw, 1.6rem); color: rgba(240, 237, 232, 0.55); font-weight: 300; margin-top: 1rem; margin-bottom: 2rem;">
+          今天，您的孩子 找到了属于自己的 <span style="color: rgba(201, 168, 76, 0.8);">表达力</span>
+        </p>
+
+        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(240, 237, 232, 0.5); font-size: 0.9rem;">
+          <div style="width: 1.25rem; height: 1.25rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(201, 168, 76, 0.4); background: rgba(201, 168, 76, 0.08);">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M2 5L4 7L8 3" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <span style="font-family: 'DM Sans', sans-serif;">Here's exactly what happened in 60 minutes · 60分钟内发生的一切</span>
+        </div>
       </div>
-    </div>
-    <div class="tmi-card gold-top">
-      <div class="tmi-time">Minutes 50–60 · 第50–60分钟</div>
-      <div class="tmi-title">The Mirror Moment</div>
-      <div class="tmi-zh-title">对比时刻 · 看见成长</div>
-      <div class="tmi-bi">
-        <p>Your child answered the <em>exact same opening question</em> — this time with ACE. The comparison was striking. That shift happened in one session. Imagine fifteen.</p>
-        <p>孩子回答了<em>完全相同的问题</em>——这次用上了ACE框架。对比令人印象深刻。这个转变发生在一节课内。想象一下15节课之后。</p>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- ═══ THE ACE FRAMEWORK ═══ -->
-<div class="section alt">
-  <div class="section-head">
-    <div class="section-head-en"><h2>The ACE Framework — What They Learned</h2></div>
-    <div class="section-head-zh"><h2>ACE框架——孩子今天掌握的核心工具</h2></div>
-  </div>
-
-  <div class="bi" style="margin-bottom:20px;">
-    <div class="bi-en">
-      <p>This is not a list of tips. It is a <strong>speaking architecture</strong> — a structural map the brain can trust under pressure. When students know exactly where they're going, hesitation disappears.</p>
-    </div>
-    <div class="bi-zh" style="padding-left:20px;">
-      <p>这不是技巧清单，而是一种<strong>表达架构</strong>——让大脑在高压时刻有路可循。当学生清楚地知道自己要去哪里，犹豫就会自然消失。</p>
-    </div>
-  </div>
-
-  <div class="ace-parent">
-    <div class="ace-p-card">
-      <div class="big-letter">A</div>
-      <h4>Anchor</h4>
-      <div class="ace-zh-title">开场锚定</div>
-      <div class="ace-bi">
-        <p>Open with a hook that demands attention — a bold question, a surprising fact, or a short story. The Anchor earns the right to be heard.</p>
-        <p>用一句让人停下来的话开场：一个问题、一个反常识的事实、或一段小故事。开场决定了你是否值得被倾听。</p>
-      </div>
-    </div>
-    <div class="ace-p-card">
-      <div class="big-letter">C</div>
-      <h4>Case</h4>
-      <div class="ace-zh-title">论证立场</div>
-      <div class="ace-bi">
-        <p>Build the argument in three layers: a clear <strong>Point</strong>, a logical <strong>Reason</strong>, and a concrete <strong>Example</strong>. One strong chain — not a scattered list.</p>
-        <p>三层论证结构：<strong>论点 → 理由 → 具体例子</strong>。一条清晰的逻辑链，而非杂乱的罗列。</p>
-      </div>
-    </div>
-    <div class="ace-p-card">
-      <div class="big-letter">E</div>
-      <h4>Echo</h4>
-      <div class="ace-zh-title">有力收尾</div>
-      <div class="ace-bi">
-        <p>Land the speech with impact: callback to the opening, a call to action, or one unforgettable closing image. The Echo is what audiences remember.</p>
-        <p>有力地结尾：呼应开场、发出号召、或留下难忘的最后一句。这是听众记得最久的部分。</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ BEFORE & AFTER ═══ -->
-<div class="section">
-  <div class="section-head">
-    <div class="section-head-en"><h2>The Before & After</h2></div>
-    <div class="section-head-zh"><h2>课前与课后的对比</h2></div>
-  </div>
-
-  <div class="bi" style="margin-bottom:16px;">
-    <div class="bi-en">
-      <p>Your child spoke the same question twice today. Here's the difference one hour of structured training made.</p>
-    </div>
-    <div class="bi-zh" style="padding-left:20px;">
-      <p>孩子今天回答了同一个问题两次。以下是一小时结构化训练带来的具体变化。</p>
-    </div>
-  </div>
-
-  <div class="transform-split">
-    <div class="ts-before">
-      <div class="ts-label">Before · 课前</div>
-      <div class="ts-title-pair">
-        <h3>Speaking from Instinct</h3>
-        <div class="zh-h3">凭感觉开口</div>
-      </div>
-      <ul class="ts-list">
-        <li>Rambled without a clear direction<span class="zh-li">漫无目的地表达，缺乏方向感</span></li>
-        <li>Lost confidence mid-sentence<span class="zh-li">说到一半失去信心</span></li>
-        <li>Filled silence with "um," "like," or repetition<span class="zh-li">用"呃""那个"和重复填补停顿</span></li>
-        <li>No memorable opening or closing<span class="zh-li">没有令人印象深刻的开场或收尾</span></li>
-        <li>Strong ideas — but buried<span class="zh-li">有好的想法——但被埋没了</span></li>
-      </ul>
-    </div>
-    <div class="ts-after">
-      <div class="ts-label">After · 课后</div>
-      <div class="ts-title-pair">
-        <h3>Speaking from Structure</h3>
-        <div class="zh-h3">用框架表达</div>
-      </div>
-      <ul class="ts-list">
-        <li>Opened with a hook that captured the room<span class="zh-li">用引人入胜的开场抓住所有人的注意力</span></li>
-        <li>Built a clear Point → Reason → Example chain<span class="zh-li">构建了清晰的论点→理由→例子逻辑链</span></li>
-        <li>Held eye contact and used deliberate pauses<span class="zh-li">保持眼神交流，有意识地使用停顿</span></li>
-        <li>Closed with a line the room remembered<span class="zh-li">用令人难忘的一句话作为收尾</span></li>
-        <li>Same ideas — now visible and powerful<span class="zh-li">同样的想法——现在清晰有力</span></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ FULL PROGRAM ═══ -->
-<div class="section dark">
-  <div class="section-head">
-    <div class="section-head-en"><h2 style="color:white;">The ACAD Journey — 3 Steps · 90 Hours</h2></div>
-    <div class="section-head-zh"><h2>ACAD三阶段课程 · 共90课时</h2></div>
-  </div>
-
-  <div class="bi" style="margin-bottom:24px;">
-    <div class="bi-en" style="border-right-color: rgba(255,255,255,.1);">
-      <p style="color:rgba(255,255,255,.6);">Today's trial is your child's first step into a complete 3-part journey — <strong style="color:white;">45 sessions · 90 hours</strong> of progressive communication training. Each step builds on the last, and every step ends with a live capstone performance in front of a real audience.</p>
-    </div>
-    <div class="bi-zh" style="padding-left:20px;">
-      <p style="color:rgba(255,255,255,.5);">今天的体验课是孩子迈入完整三阶段旅程的第一步——<strong style="color:rgba(255,255,255,.75);">共45节课 · 90小时</strong>的进阶式沟通训练。每个阶段在上一阶段基础上深化，且每个阶段均以在真实观众面前的公开展示作为收尾。</p>
-    </div>
-  </div>
-
-  <div class="track-phases">
-
-    <!-- STEP 1 -->
-    <div class="tp-card active">
-      <div class="tp-num">1</div>
-      <div class="tp-en-title">Public Speaking</div>
-      <div class="tp-zh-title">公众演讲</div>
-      <div class="tp-sessions">15 Sessions · 30 Hours · 第一阶段</div>
-      <div class="tp-bi">
-        <p>Structure, delivery, and presence. Students master the ACE framework, vocal control, eye contact, and how to command a room with confidence on any topic.</p>
-        <p>结构、表达与气场。学生掌握ACE框架、声音控制、眼神交流，以及如何自信地在任何话题上主导全场。</p>
-      </div>
-      <div style="margin-top:12px; padding-top:10px; border-top: 1px solid rgba(255,255,255,.12); font-size:11.5px; color:#7ecfcf;">
-        🎤 Ends with a live public capstone presentation<br>
-        <span style="color:rgba(255,255,255,.4);">结业时进行公开演讲展示</span>
-      </div>
-      <div class="tp-tag">← Today's Trial Begins Here · 今日体验课入口</div>
-    </div>
-
-    <!-- STEP 2 -->
-    <div class="tp-card">
-      <div class="tp-num">2</div>
-      <div class="tp-en-title">Debate</div>
-      <div class="tp-zh-title">辩论</div>
-      <div class="tp-sessions">15 Sessions · 30 Hours · 第二阶段</div>
-      <div class="tp-bi">
-        <p>Live argumentation under pressure. Students learn structured debate formats, rebuttal strategy, and cross-examination — thinking and speaking at the same time.</p>
-        <p>高压下的即兴论辩。学生学习正式辩论格式、反驳策略和交叉质询——边思考、边开口。</p>
-      </div>
-      <div style="margin-top:12px; padding-top:10px; border-top: 1px solid rgba(255,255,255,.12); font-size:11.5px; color:rgba(255,255,255,.5);">
-        🏆 Ends with a live debate tournament<br>
-        <span style="color:rgba(255,255,255,.3);">结业时进行现场辩论赛</span>
+      <div class="grid grid-cols-3 gap-4 mt-16 max-w-2xl" style="animation: fadeInUp 1s ease 0.5s both;">
+        <div class="card-gold rounded-lg p-4" style="animation-delay: 0.6s;">
+          <div class="stat-mono text-gold-gradient font-bold mb-1" style="font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1;">1</div>
+          <div style="font-size: 0.7rem; color: rgba(240, 237, 232, 0.7); font-weight: 500; line-height: 1.3;">Framework Learned</div>
+          <div style="font-size: 0.6rem; color: rgba(201, 168, 76, 0.5); margin-top: 2px;">掌握一套框架</div>
+        </div>
+        <div class="card-gold rounded-lg p-4" style="animation-delay: 0.75s;">
+          <div class="stat-mono text-gold-gradient font-bold mb-1" style="font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1;">2×</div>
+          <div style="font-size: 0.7rem; color: rgba(240, 237, 232, 0.7); font-weight: 500; line-height: 1.3;">Same Question, Two Speeches</div>
+          <div style="font-size: 0.6rem; color: rgba(201, 168, 76, 0.5); margin-top: 2px;">同一问题，两次作答</div>
+        </div>
+        <div class="card-gold rounded-lg p-4" style="animation-delay: 0.9s;">
+          <div class="stat-mono text-gold-gradient font-bold mb-1" style="font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1;">60</div>
+          <div style="font-size: 0.7rem; color: rgba(240, 237, 232, 0.7); font-weight: 500; line-height: 1.3;">Minutes to Transformation</div>
+          <div style="font-size: 0.6rem; color: rgba(201, 168, 76, 0.5); margin-top: 2px;">分钟内的蜕变</div>
+        </div>
       </div>
     </div>
 
-    <!-- STEP 3 -->
-    <div class="tp-card">
-      <div class="tp-num">3</div>
-      <div class="tp-en-title">Capstone & Leadership</div>
-      <div class="tp-zh-title">领袖展示与毕业答辩</div>
-      <div class="tp-sessions">15 Sessions · 30 Hours · 第三阶段</div>
-      <div class="tp-bi">
-        <p>Students design and deliver a full-length original presentation on a real-world topic — then defend it live before an audience and a panel. The university-admissions standard.</p>
-        <p>学生围绕真实议题自主设计并完成完整演讲，随后在观众和评审面前进行现场答辩——达到大学申请标准。</p>
-      </div>
-      <div style="margin-top:12px; padding-top:10px; border-top: 1px solid rgba(255,255,255,.12); font-size:11.5px; color:rgba(255,255,255,.5);">
-        🌟 Ends with a public capstone in front of a live audience<br>
-        <span style="color:rgba(255,255,255,.3);">结业时举行对外公开的领袖级演讲展示</span>
-      </div>
+    <div style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; animation: fadeIn 1.5s ease 1.5s both;">
+      <span style="font-size: 0.6rem; letter-spacing: 0.2em; color: rgba(201, 168, 76, 0.4); font-family: 'JetBrains Mono', monospace;">SCROLL</span>
+      <div style="width: 1px; height: 3rem; background: linear-gradient(to bottom, rgba(201, 168, 76, 0.5), transparent);"></div>
     </div>
+  </section>
 
-  </div>
+  <!-- TIMELINE SECTION -->
+  <section style="position: relative; padding-top: 7rem; padding-bottom: 7rem; overflow: hidden; background: linear-gradient(180deg, #0A0B0E 0%, #0D0F14 100%);">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 24rem; height: 24rem; border-radius: 9999px; pointer-events: none; background: radial-gradient(circle, rgba(74, 158, 255, 0.04) 0%, transparent 70%);"></div>
 
-  <!-- TOTAL COMMITMENT SUMMARY BAR -->
-  <div style="margin-top:20px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-radius:8px; padding:18px 24px; display:flex; gap:32px; flex-wrap:wrap; align-items:center;">
-    <div style="text-align:center;">
-      <div style="font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:700; color:#7ecfcf; line-height:1;">45</div>
-      <div style="font-size:11px; color:rgba(255,255,255,.45); letter-spacing:1px; text-transform:uppercase; margin-top:2px;">Total Sessions<br>总节数</div>
-    </div>
-    <div style="width:1px; background:rgba(255,255,255,.1); align-self:stretch;"></div>
-    <div style="text-align:center;">
-      <div style="font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:700; color:#7ecfcf; line-height:1;">90</div>
-      <div style="font-size:11px; color:rgba(255,255,255,.45); letter-spacing:1px; text-transform:uppercase; margin-top:2px;">Total Hours<br>总课时</div>
-    </div>
-    <div style="width:1px; background:rgba(255,255,255,.1); align-self:stretch;"></div>
-    <div style="text-align:center;">
-      <div style="font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:700; color:#7ecfcf; line-height:1;">3</div>
-      <div style="font-size:11px; color:rgba(255,255,255,.45); letter-spacing:1px; text-transform:uppercase; margin-top:2px;">Live Capstones<br>公开展示场次</div>
-    </div>
-    <div style="width:1px; background:rgba(255,255,255,.1); align-self:stretch;"></div>
-    <div style="flex:1; min-width:220px;">
-      <div style="font-size:13px; color:rgba(255,255,255,.65); line-height:1.6;">Each step is a complete module. Students grow one phase at a time — and every phase ends with a public performance that families are invited to attend.<br><span style="font-size:11.5px; color:rgba(255,255,255,.35);">每个阶段均为独立模块，循序渐进。每阶段结业时举行公开展示，家长受邀出席观看。</span></div>
-    </div>
-  </div>
-</div>
+    <div class="container">
+      <div class="reveal-up mb-20">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="hairline-gold" style="width: 32px;"></div>
+          <span class="section-number">01 · WHAT HAPPENED TODAY · 今天课堂发生了什么</span>
+        </div>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); color: #F0EDE8; font-weight: 700; line-height: 1.15;">
+          What Happened <span class="text-gold-gradient">Today</span>
+        </h2>
+        <p style="color: rgba(240, 237, 232, 0.45); margin-top: 0.5rem; font-size: 1rem;">今天课堂发生了什么</p>
+      </div>
 
-<!-- ═══ OUTCOMES ═══ -->
-<div class="section alt">
-  <div class="section-head">
-    <div class="section-head-en"><h2>What Your Child Will Be Able to Do</h2></div>
-    <div class="section-head-zh"><h2>完成三阶段课程后，孩子能做到什么</h2></div>
-  </div>
-  <div class="bi" style="margin-bottom:20px;">
-    <div class="bi-en">
-      <p>Each step delivers its own transformation. By the end of all three, your child will have developed a complete communication identity — one that follows them into university, career, and leadership.</p>
-    </div>
-    <div class="bi-zh" style="padding-left:20px;">
-      <p>每个阶段都带来独立的成长。三阶段全部完成后，孩子将建立起完整的表达力体系——伴随他们走向大学、职业与领导力舞台。</p>
-    </div>
-  </div>
-  <div class="outcomes-grid">
-    <div class="oc-card">
-      <div class="oc-title-row">
-        <h5>After Step 1 — Speak with Conviction</h5>
-        <div class="oc-zh-title">第一阶段结束 · 有说服力地表达观点</div>
-      </div>
-      <div class="oc-bi">
-        <p>Deliver a structured, confident speech on any topic — in class, on stage, or in a university interview — with clarity, presence, and a finish that lands.</p>
-        <p>在课堂、舞台或大学面试中，就任何话题发表有结构、有自信的演讲——清晰有力，收尾令人印象深刻。</p>
-      </div>
-    </div>
-    <div class="oc-card">
-      <div class="oc-title-row">
-        <h5>After Step 2 — Defend Under Pressure</h5>
-        <div class="oc-zh-title">第二阶段结束 · 在质疑中从容应对</div>
-      </div>
-      <div class="oc-bi">
-        <p>Handle counterarguments and cross-examination without panic. Think on their feet and stay composed when challenged in real time by opponents or professors.</p>
-        <p>面对反驳和质询时不慌乱，能够即时思考并保持镇定——无论是在辩论中还是被导师质疑时。</p>
-      </div>
-    </div>
-    <div class="oc-card">
-      <div class="oc-title-row">
-        <h5>After Step 3 — Lead Through Communication</h5>
-        <div class="oc-zh-title">第三阶段结束 · 以表达力展现领导力</div>
-      </div>
-      <div class="oc-bi">
-        <p>Design and deliver a full original presentation before a live audience — then defend it to a panel. The standard that separates candidates at top universities worldwide.</p>
-        <p>自主设计并在真实观众前完成完整演讲，再向评审进行答辩——这是顶尖大学申请者之间真正拉开差距的能力。</p>
-      </div>
-    </div>
-    <div class="oc-card">
-      <div class="oc-title-row">
-        <h5>Across All 3 Steps — Perform When It Counts</h5>
-        <div class="oc-zh-title">贯穿三阶段 · 在关键时刻真正发挥</div>
-      </div>
-      <div class="oc-bi">
-        <p>MUN, school competitions, TEDx-style talks, admissions interviews — every high-stakes speaking moment your child will face is trained for here, with a real audience performance at the end of every phase.</p>
-        <p>MUN、校内竞赛、TEDx风格演讲、升学面试——孩子未来将面临的每一个高压表达时刻，都在这里系统训练，并以每阶段的公开展示作为检验。</p>
-      </div>
-    </div>
-  </div>
-</div>
+      <div style="position: relative;">
+        <div style="position: absolute; left: 2rem; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, rgba(74, 158, 255, 0.3), rgba(201, 168, 76, 0.3), rgba(201, 168, 76, 0.1)); display: none;" class="md:block"></div>
 
-<!-- ═══ CTA ═══ -->
-<div class="cta-bar">
-  <div class="cta-text-bi">
-    <div class="cta-en">
-      <h2>Ready to Begin<br>Step 1?</h2>
-      <p>Enroll in the Public Speaking track — 15 sessions, 30 hours, one live capstone performance. Fill in your details and we'll be in touch within 24 hours.</p>
-    </div>
-    <div class="cta-zh">
-      <h2>准备好开始<br>第一阶段了吗？</h2>
-      <p>报名公众演讲课程——15节课，30课时，一场公开演讲展示。填写信息后，我们将在24小时内与您联系。</p>
-    </div>
-  </div>
-  <div>
-    <a class="cta-btn" href="https://docs.google.com/forms/d/1e7beCP2GU-hg2JWbxn08yblMmoZwwUO_K4U9jqrxB0k/viewform" target="_blank" rel="noopener">
-      Join the ACAD Track
-      <div class="btn-zh">加入课程 · 立即报名</div>
-    </a>
-  </div>
-</div>
+        <div style="display: flex; flex-direction: column; gap: 3rem;">
+          <!-- Timeline Item 1 -->
+          <div class="reveal-up relative flex flex-col md:flex-row gap-6 md:gap-10">
+            <div style="flex-shrink: 0; position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; md:items-start;">
+              <div style="width: 4rem; height: 4rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, rgba(74, 158, 255, 0.22) 0%, rgba(17, 19, 24, 0.9) 100%); border: 1px solid rgba(74, 158, 255, 0.44); color: #4A9EFF; box-shadow: 0 0 20px rgba(74, 158, 255, 0.2);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 8v4l3 3" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div style="margin-top: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: #4A9EFF; opacity: 0.7; letter-spacing: 0.1em;">0–15</div>
+            </div>
+            <div style="flex: 1; border-radius: 0.75rem; padding: 1.5rem 2rem; background: rgba(17, 19, 24, 0.6); border: 1px solid rgba(74, 158, 255, 0.18); backdrop-filter: blur(12px); transition: all 0.5s ease;">
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                <span style="padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.6rem; font-weight: 500; font-family: 'JetBrains Mono', monospace; background: rgba(74, 158, 255, 0.15); color: #4A9EFF; border: 1px solid rgba(74, 158, 255, 0.3); letter-spacing: 0.1em;">MINUTES 0–15 · 第0–15分钟</span>
+              </div>
+              <h3 style="font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 2.5vw, 1.6rem); color: #F0EDE8; font-weight: 600; margin-bottom: 0.25rem;">The Cold Open + Diagnosis</h3>
+              <p style="color: #4A9EFF; font-size: 0.85rem; margin-bottom: 1rem; opacity: 0.8;">开场挑战 + 问题诊断</p>
+              <div style="display: grid; md:grid-cols-2; gap: 1rem;">
+                <p style="color: rgba(240, 237, 232, 0.65); font-size: 0.9rem; line-height: 1.7;">Your child spoke unassisted on a real question — no prep, no framework. We identified the true source of speaking anxiety: not vocabulary, but <strong style="color: #F0EDE8;">structure.</strong></p>
+                <p style="color: rgba(240, 237, 232, 0.4); font-size: 0.85rem; line-height: 1.7;">孩子在没有任何准备的情况下直接开口。我们识别出了表达焦虑的真正根源：不是词汇，而是<strong style="color: rgba(201, 168, 76, 0.7);">结构的缺失。</strong></p>
+              </div>
+            </div>
+          </div>
 
-<!-- ═══ FOOTER ═══ -->
-<div class="footer-bar">
-  <div class="footer-brand">
-    Global <span>Success</span> Center
-    <div class="footer-brand-zh">国际精英学术中心</div>
-  </div>
-  <div class="footer-contact">
-    <strong>WeChat · 微信</strong> wongrat1216<br>
-    <strong>LINE</strong> johnwong1216<br>
-    Chiang Mai, Thailand · 泰国清迈<br>
-    International Schools Program · 国际学校课程
-  </div>
-  <div class="footer-note">
-    ACAD Track · 学术表达与辩论课程<br>
-    Grades 5–12 · 五至十二年级<br>
-    ISB · NIST · Harrow · Prem · Shrewsbury
-  </div>
-</div>
+          <!-- Timeline Item 2 -->
+          <div class="reveal-up relative flex flex-col md:flex-row gap-6 md:gap-10" style="transition-delay: 0.15s;">
+            <div style="flex-shrink: 0; position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; md:items-start;">
+              <div style="width: 4rem; height: 4rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, rgba(201, 168, 76, 0.22) 0%, rgba(17, 19, 24, 0.9) 100%); border: 1px solid rgba(201, 168, 76, 0.44); color: #C9A84C; box-shadow: 0 0 20px rgba(201, 168, 76, 0.2);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div style="margin-top: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: #C9A84C; opacity: 0.7; letter-spacing: 0.1em;">15–50</div>
+            </div>
+            <div style="flex: 1; border-radius: 0.75rem; padding: 1.5rem 2rem; background: rgba(17, 19, 24, 0.6); border: 1px solid rgba(201, 168, 76, 0.18); backdrop-filter: blur(12px); transition: all 0.5s ease;">
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                <span style="padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.6rem; font-weight: 500; font-family: 'JetBrains Mono', monospace; background: rgba(201, 168, 76, 0.15); color: #C9A84C; border: 1px solid rgba(201, 168, 76, 0.3); letter-spacing: 0.1em;">MINUTES 15–50 · 第15–50分钟</span>
+              </div>
+              <h3 style="font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 2.5vw, 1.6rem); color: #F0EDE8; font-weight: 600; margin-bottom: 0.25rem;">Framework Teaching + Coached Rounds</h3>
+              <p style="color: #C9A84C; font-size: 0.85rem; margin-bottom: 1rem; opacity: 0.8;">框架学习 + 实战演练</p>
+              <div style="display: grid; md:grid-cols-2; gap: 1rem;">
+                <p style="color: rgba(240, 237, 232, 0.65); font-size: 0.9rem; line-height: 1.7;">We introduced the ACE Method — the same 3-part architecture used by debate champions and TED speakers. Students practiced, were coached one-on-one, and spoke again with precision.</p>
+                <p style="color: rgba(240, 237, 232, 0.4); font-size: 0.85rem; line-height: 1.7;">我们介绍了ACE方法——一套辩论冠军与TED演讲者共同使用的三步表达架构。学生练习、获得一对一指导，然后带着精准度再次开口。</p>
+              </div>
+            </div>
+          </div>
 
+          <!-- Timeline Item 3 -->
+          <div class="reveal-up relative flex flex-col md:flex-row gap-6 md:gap-10" style="transition-delay: 0.3s;">
+            <div style="flex-shrink: 0; position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; md:items-start;">
+              <div style="width: 4rem; height: 4rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, rgba(201, 168, 76, 0.22) 0%, rgba(17, 19, 24, 0.9) 100%); border: 1px solid rgba(201, 168, 76, 0.44); color: #C9A84C; box-shadow: 0 0 20px rgba(201, 168, 76, 0.2);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round" />
+                  <circle cx="12" cy="12" r="10" />
+                </svg>
+              </div>
+              <div style="margin-top: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: #C9A84C; opacity: 0.7; letter-spacing: 0.1em;">50–60</div>
+            </div>
+            <div style="flex: 1; border-radius: 0.75rem; padding: 1.5rem 2rem; background: rgba(17, 19, 24, 0.6); border: 1px solid rgba(201, 168, 76, 0.18); backdrop-filter: blur(12px); transition: all 0.5s ease;">
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                <span style="padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.6rem; font-weight: 500; font-family: 'JetBrains Mono', monospace; background: rgba(201, 168, 76, 0.15); color: #C9A84C; border: 1px solid rgba(201, 168, 76, 0.3); letter-spacing: 0.1em;">MINUTES 50–60 · 第50–60分钟</span>
+              </div>
+              <h3 style="font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 2.5vw, 1.6rem); color: #F0EDE8; font-weight: 600; margin-bottom: 0.25rem;">The Mirror Moment</h3>
+              <p style="color: #C9A84C; font-size: 0.85rem; margin-bottom: 1rem; opacity: 0.8;">对比时刻 · 看见成长</p>
+              <div style="display: grid; md:grid-cols-2; gap: 1rem;">
+                <p style="color: rgba(240, 237, 232, 0.65); font-size: 0.9rem; line-height: 1.7;">Your child answered the exact same opening question — this time with ACE. The comparison was striking. That shift happened in one session. <strong style="color: #F0EDE8;">Imagine fifteen.</strong></p>
+                <p style="color: rgba(240, 237, 232, 0.4); font-size: 0.85rem; line-height: 1.7;">孩子回答了完全相同的问题——这次用上了ACE框架。对比令人印象深刻。这个转变发生在一节课内。<strong style="color: rgba(201, 168, 76, 0.7);">想象一下15节课之后。</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACE SECTION -->
+  <section style="position: relative; padding-top: 7rem; padding-bottom: 7rem; overflow: hidden; background: linear-gradient(180deg, #0D0F14 0%, #0A0B0E 100%);">
+    <div style="position: absolute; top: 0; right: 0; width: 24rem; height: 24rem; pointer-events: none; background: radial-gradient(circle, rgba(201, 168, 76, 0.05) 0%, transparent 70%);"></div>
+
+    <div class="container">
+      <div class="reveal-up mb-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="hairline-gold" style="width: 32px;"></div>
+          <span class="section-number">02 · THE ACE FRAMEWORK · ACE框架</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4 items-end">
+          <div>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); color: #F0EDE8; font-weight: 700; line-height: 1.15;">
+              The ACE Framework — <span class="text-gold-gradient">What They Learned</span>
+            </h2>
+            <p style="color: rgba(240, 237, 232, 0.4); margin-top: 0.5rem;">ACE框架——孩子今天掌握的核心工具</p>
+          </div>
+          <div class="md:text-right">
+            <p style="color: rgba(240, 237, 232, 0.5); font-size: 0.9rem; line-height: 1.7; max-width: 400px; margin-left: auto;">
+              This is not a list of tips. It is a <strong style="color: #F0EDE8;">speaking architecture</strong> — a structural map the brain can trust under pressure.
+            </p>
+            <p style="color: rgba(201, 168, 76, 0.45); font-size: 0.8rem; margin-top: 0.5rem;">这不是技巧清单，而是一种表达架构——让大脑在高压时刻有路可循。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACE Image -->
+      <div class="reveal-scale mb-16 relative">
+        <div style="border-radius: 1rem; overflow: hidden; position: relative; border: 1px solid rgba(201, 168, 76, 0.15); box-shadow: 0 0 60px rgba(201, 168, 76, 0.08), 0 40px 80px rgba(0, 0, 0, 0.5); max-height: 380px;">
+          <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663628649363/TpgXn7rmUL8AtPoBRmKF84/ace-3d-visual-7S6H7yAXLchFQTCPaFAjWf.webp" alt="ACE Framework 3D Letters" style="width: 100%; object-fit: cover; max-height: 380px; object-position: center 30%;" />
+          <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(10, 11, 14, 0.95) 100%);"></div>
+        </div>
+      </div>
+
+      <!-- ACE Cards -->
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Card A -->
+        <div class="reveal-up group relative rounded-xl p-8 cursor-default transition-all duration-500" style="background: linear-gradient(135deg, rgba(74, 158, 255, 0.12) 0%, rgba(17, 19, 24, 0.9) 100%); border: 1px solid rgba(74, 158, 255, 0.25); backdrop-filter: blur(12px);">
+          <div style="position: absolute; top: 1rem; right: 1.5rem; font-family: 'Playfair Display', serif; font-size: 6rem; color: #4A9EFF; opacity: 0.06; line-height: 1; pointer-events: none; user-select: none;">A</div>
+          <div style="width: 3rem; height: 3rem; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #4A9EFF; background: rgba(74, 158, 255, 0.15); border: 1px solid rgba(74, 158, 255, 0.3); font-weight: 700;">A</div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #F0EDE8; font-weight: 600; margin-bottom: 0.25rem;">Anchor</h3>
+          <p style="color: #4A9EFF; font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.8;">开场锚定</p>
+          <div style="height: 1px; margin-bottom: 1rem; background: linear-gradient(90deg, rgba(74, 158, 255, 0.4), transparent);"></div>
+          <p style="color: rgba(240, 237, 232, 0.65); font-size: 0.88rem; line-height: 1.75; margin-bottom: 0.75rem;">Open with a hook that demands attention — a bold question, a surprising fact, or a short story. The Anchor earns the right to be heard.</p>
+          <p style="color: rgba(240, 237, 232, 0.35); font-size: 0.8rem; line-height: 1.7;">用一句让人停下来的话开场：一个问题、一个反常识的事实、或一段小故事。开场决定了你是否值得被倾听。</p>
+        </div>
+
+        <!-- Card C -->
+        <div class="reveal-up group relative rounded-xl p-8 cursor-default transition-all duration-500" style="background: linear-gradient(135deg, rgba(201, 168, 76, 0.12) 0%, rgba(17, 19, 24, 0.9) 100%); border: 1px solid rgba(201, 168, 76, 0.3); backdrop-filter: blur(12px); transition-delay: 0.15s;">
+          <div style="position: absolute; top: 1rem; right: 1.5rem; font-family: 'Playfair Display', serif; font-size: 6rem; color: #C9A84C; opacity: 0.06; line-height: 1; pointer-events: none; user-select: none;">C</div>
+          <div style="width: 3rem; height: 3rem; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #C9A84C; background: rgba(201, 168, 76, 0.15); border: 1px solid rgba(201, 168, 76, 0.3); font-weight: 700;">C</div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #F0EDE8; font-weight: 600; margin-bottom: 0.25rem;">Case</h3>
+          <p style="color: #C9A84C; font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.8;">论证立场</p>
+          <div style="height: 1px; margin-bottom: 1rem; background: linear-gradient(90deg, rgba(201, 168, 76, 0.4), transparent);"></div>
+          <p style="color: rgba(240, 237, 232, 0.65); font-size: 0.88rem; line-height: 1.75; margin-bottom: 0.75rem;">Build the argument in three layers: a clear Point, a logical Reason, and a concrete Example. One strong chain — not a scattered list.</p>
+          <p style="color: rgba(240, 237, 232, 0.35); font-size: 0.8rem; line-height: 1.7;">三层论证结构：论点 → 理由 → 具体例子。一条清晰的逻辑链，而非杂乱的罗列。</p>
+        </div>
+
+        <!-- Card E -->
+        <div class="reveal-up group relative rounded-xl p-8 cursor-default transition-all duration-500" style="background: linear-gradient(135deg, rgba(74, 158, 255, 0.12) 0%, rgba(17, 19, 24, 0.9) 100%); border: 1px solid rgba(74, 158, 255, 0.25); backdrop-filter: blur(12px); transition-delay: 0.3s;">
+          <div style="position: absolute; top: 1rem; right: 1.5rem; font-family: 'Playfair Display', serif; font-size: 6rem; color: #4A9EFF; opacity: 0.06; line-height: 1; pointer-events: none; user-select: none;">E</div>
+          <div style="width: 3rem; height: 3rem; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #4A9EFF; background: rgba(74, 158, 255, 0.15); border: 1px solid rgba(74, 158, 255, 0.3); font-weight: 700;">E</div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #F0EDE8; font-weight: 600; margin-bottom: 0.25rem;">Echo</h3>
+          <p style="color: #4A9EFF; font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.8;">有力收尾</p>
+          <div style="height: 1px; margin-bottom: 1rem; background: linear-gradient(90deg, rgba(74, 158, 255, 0.4), transparent);"></div>
+          <p style="color: rgba(240, 237, 232, 0.65); font-size: 0.88rem; line-height: 1.75; margin-bottom: 0.75rem;">Land the speech with impact: callback to the opening, a call to action, or one unforgettable closing image. The Echo is what audiences remember.</p>
+          <p style="color: rgba(240, 237, 232, 0.35); font-size: 0.8rem; line-height: 1.7;">有力地结尾：呼应开场、发出号召、或留下难忘的最后一句。这是听众记得最久的部分。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE/AFTER SECTION -->
+  <section style="position: relative; padding-top: 7rem; padding-bottom: 7rem; overflow: hidden; background: linear-gradient(180deg, #0A0B0E 0%, #0D0F14 100%);">
+    <div style="position: absolute; inset: 0; background-image: url('https://d2xsxph8kpxj0f.cloudfront.net/310519663628649363/TpgXn7rmUL8AtPoBRmKF84/transformation-visual-4ZmbD6q4Vfb2FjWZ9cxrWh.webp'); background-size: cover; background-position: center; opacity: 0.06;"></div>
+
+    <div class="container relative z-10">
+      <div class="reveal-up mb-16 text-center">
+        <div class="flex items-center justify-center gap-3 mb-4">
+          <div class="hairline-gold" style="width: 32px;"></div>
+          <span class="section-number">03 · THE BEFORE & AFTER · 课前与课后的对比</span>
+          <div class="hairline-gold" style="width: 32px;"></div>
+        </div>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); color: #F0EDE8; font-weight: 700; line-height: 1.15;">
+          The <span class="text-gold-gradient">Before & After</span>
+        </h2>
+        <p style="color: rgba(240, 237, 232, 0.4); margin-top: 0.5rem;">课前与课后的对比</p>
+        <p style="color: rgba(240, 237, 232, 0.5); font-size: 0.9rem; margin-top: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;">Your child spoke the same question twice today. Here's the difference one hour of structured training made.</p>
+        <p style="color: rgba(201, 168, 76, 0.4); font-size: 0.8rem; margin-top: 0.4rem;">孩子今天回答了同一个问题两次。以下是一小时结构化训练带来的具体变化。</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <!-- BEFORE -->
+        <div class="reveal-left rounded-2xl p-8 relative overflow-hidden" style="background: linear-gradient(135deg, rgba(20, 10, 10, 0.95) 0%, rgba(17, 19, 24, 0.8) 100%); border: 1px solid rgba(255, 80, 80, 0.12);">
+          <div style="position: absolute; top: 1rem; right: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 5rem; color: rgba(255, 80, 80, 0.04); line-height: 1; pointer-events: none; user-select: none;">BEFORE</div>
+          <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0.75rem; border-radius: 9999px; margin-bottom: 1rem; background: rgba(255, 80, 80, 0.08); border: 1px solid rgba(255, 80, 80, 0.2);">
+            <div style="width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: #FF5050;"></div>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: #FF5050; letter-spacing: 0.15em;">BEFORE · 课前</span>
+          </div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #F0EDE8; font-weight: 600; margin-bottom: 0.25rem;">Speaking from Instinct</h3>
+          <p style="color: rgba(255, 80, 80, 0.6); font-size: 0.85rem;">凭感觉开口</p>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem;">
+            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <div style="width: 1.25rem; height: 1.25rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.125rem; background: rgba(255, 80, 80, 0.1); border: 1px solid rgba(255, 80, 80, 0.2);">
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                  <path d="M2 2L6 6M6 2L2 6" stroke="#FF5050" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div>
+                <p style="color: rgba(240, 237, 232, 0.65); font-size: 0.88rem; line-height: 1.5;">Rambled without a clear direction</p>
+                <p style="color: rgba(240, 237, 232, 0.3); font-size: 0.75rem; line-height: 1.4; margin-top: 1px;">漫无目的地表达，缺乏方向感</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <div style="width: 1.25rem; height: 1.25rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.125rem; background: rgba(255, 80, 80, 0.1); border: 1px solid rgba(255, 80, 80, 0.2);">
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                  <path d="M2 2L6 6M6 2L2 6" stroke="#FF5050" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div>
+                <p style="color: rgba(240, 237, 232, 0.65); font-size: 0.88rem; line-height: 1.5;">Lost confidence mid-sentence</p>
+                <p style="color: rgba(240, 237, 232, 0.3); font-size: 0.75rem; line-height: 1.4; margin-top: 1px;">说到一半失去信心</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <div style="width: 1.25rem; height: 1.25rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.125rem; background: rgba(255, 80, 80, 0.1); border: 1px solid rgba(255, 80, 80, 0.2);">
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                  <path d="M2 2L6 6M6 2L2 6" stroke="#FF5050" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div>
+                <p style="color: rgba(240, 237, 232, 0.65); font-size: 0.88rem; line-height: 1.5;">Filled silence with "um," "like," or repetition</p>
+                <p style="color: rgba(240, 237, 232, 0.3); font-size: 0.75rem; line-height: 1.4; margin-top: 1px;">用"呃""那个"和重复填补停顿</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <div style="width: 1.25rem; height: 1.25rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.125rem; background: rgba(255, 80, 80, 0.1); border: 1px solid rgba(255, 80, 80, 0.2);">
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                  <path d="M2 2L6 6M6 2L2 6" stroke="#FF5050" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div>
+                <p style="color: rgba(240, 237, 232, 0.65); font-size: 0.88rem; line-height: 1.5;">No memorable opening or closing</p>
+                <p style="color: rgba(240, 237, 232, 0.3); font-size: 0.75rem; line-height: 1.4; margin-top: 1px;">没有令人印象深刻的开场或收尾</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <div style="width: 1.25rem; height: 1.25rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.125rem; background: rgba(255, 80, 80, 0.1); border: 1px solid rgba(255, 80, 80, 0.2);">
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                  <path d="M2 2L6 6M6 2L2 6" stroke="#FF5050" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div>
+                <p style="color: rgba(240, 237, 232, 0.65); font-size: 0.88rem; line-height: 1.5;">Strong ideas — but buried</p>
+                <p style="color: rgba(240, 237, 232, 0.3); font-size: 0.75rem; line-height: 1.4; margin-top: 1px;">有好的想法——但被埋没了</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AFTER -->
+        <div class="reveal-right rounded-2xl p-8 relative overflow-hidden" style="background: linear-gradient(135deg, rgba(10, 20, 15, 0.95) 0%, rgba(17, 19, 24, 0.8) 100%); border: 1px solid rgba(201, 168, 76, 0.2); box-shadow: 0 0 40px rgba(201, 168, 76, 0.06);">
+          <div style="position: absolute; top: 1rem; right: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 5rem; color: rgba(201, 168, 76, 0.04); line-height: 1; pointer-events: none; user-select: none;">AFTER</div>
+          <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0.75rem; border-radius: 9999px; margin-bottom: 1rem; background: rgba(201, 168, 76, 0.08); border: 1px solid rgba(201, 168, 76, 0.25);">
+            <div style="width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: #C9A84C;"></div>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: #C9A84C; letter-spacing: 0.15em;">AFTER · 课后</span>
+          </div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #F0EDE8; font-weight: 600; margin-bottom: 0.25rem;">Speaking from Structure</h3>
+          <p style="color: rgba(201, 168, 76, 0.6); font-size: 0.85rem;">用框架表达</p>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem;">
+            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <div style="width: 1.25rem; height: 1.25rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.125rem; background: rgba(201, 168, 76, 0.1); border: 1px solid rgba(201, 168, 76, 0.25);">
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                  <path d="M1.5 4L3 5.5L6.5 2" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div>
+                <p style="color: rgba(240, 237, 232, 0.75); font-size: 0.88rem; line-height: 1.5;">Opened with a hook that captured the room</p>
+                <p style="color: rgba(240, 237, 232, 0.3); font-size: 0.75rem; line-height: 1.4; margin-top: 1px;">用引人入胜的开场抓住所有人的注意力</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <div style="width: 1.25rem; height: 1.25rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.125rem; background: rgba(201, 168, 76, 0.1); border: 1px solid rgba(201, 168, 76, 0.25);">
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                  <path d="M1.5 4L3 5.5L6.5 2" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div>
+                <p style="color: rgba(240, 237, 232, 0.75); font-size: 0.88rem; line-height: 1.5;">Built a clear Point → Reason → Example chain</p>
+                <p style="color: rgba(240, 237, 232, 0.3); font-size: 0.75rem; line-height: 1.4; margin-top: 1px;">构建了清晰的论点→理由→例子逻辑链</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <div style="width: 1.25rem; height: 1.25rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.125rem; background: rgba(201, 168, 76, 0.1); border: 1px solid rgba(201, 168, 76, 0.25);">
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                  <path d="M1.5 4L3 5.5L6.5 2" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div>
+                <p style="color: rgba(240, 237, 232, 0.75); font-size: 0.88rem; line-height: 1.5;">Held eye contact and used deliberate pauses</p>
+                <p style="color: rgba(240, 237, 232, 0.3); font-size: 0.75rem; line-height: 1.4; margin-top: 1px;">保持眼神交流，有意识地使用停顿</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <div style="width: 1.25rem; height: 1.25rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.125rem; background: rgba(201, 168, 76, 0.1); border: 1px solid rgba(201, 168, 76, 0.25);">
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                  <path d="M1.5 4L3 5.5L6.5 2" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div>
+                <p style="color: rgba(240, 237, 232, 0.75); font-size: 0.88rem; line-height: 1.5;">Closed with a line the room remembered</p>
+                <p style="color: rgba(240, 237, 232, 0.3); font-size: 0.75rem; line-height: 1.4; margin-top: 1px;">用令人难忘的一句话作为收尾</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <div style="width: 1.25rem; height: 1.25rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.125rem; background: rgba(201, 168, 76, 0.1); border: 1px solid rgba(201, 168, 76, 0.25);">
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                  <path d="M1.5 4L3 5.5L6.5 2" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div>
+                <p style="color: rgba(240, 237, 232, 0.75); font-size: 0.88rem; line-height: 1.5;">Same ideas — now visible and powerful</p>
+                <p style="color: rgba(240, 237, 232, 0.3); font-size: 0.75rem; line-height: 1.4; margin-top: 1px;">同样的想法——现在清晰有力</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal-up mt-12 text-center" style="transition-delay: 0.2s;">
+        <p style="font-family: 'Playfair Display', serif; font-size: clamp(1rem, 2.5vw, 1.4rem); color: rgba(240, 237, 232, 0.55); font-style: italic; max-width: 700px; margin: 0 auto;">
+          "That shift happened in one session. <span class="text-gold-gradient" style="font-style: normal; font-weight: 600;">Imagine fifteen.</span>"
+        </p>
+        <p style="color: rgba(201, 168, 76, 0.35); font-size: 0.8rem; margin-top: 0.5rem;">这个转变发生在一节课内。想象一下15节课之后。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY SECTION -->
+  <section style="position: relative; padding-top: 7rem; padding-bottom: 7rem; overflow: hidden; background: linear-gradient(180deg, #0D0F14 0%, #0A0B0E 100%);">
+    <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; height: 16rem; pointer-events: none; background: radial-gradient(ellipse, rgba(74, 158, 255, 0.04) 0%, transparent 70%);"></div>
+
+    <div class="container">
+      <div class="reveal-up mb-12">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="hairline-gold" style="width: 32px;"></div>
+          <span class="section-number">04 · THE ACAD JOURNEY · ACAD三阶段课程</span>
+        </div>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); color: #F0EDE8; font-weight: 700; line-height: 1.15;">
+          The ACAD Journey — <span class="text-gold-gradient">3 Steps · 90 Hours</span>
+        </h2>
+        <p style="color: rgba(240, 237, 232, 0.4); margin-top: 0.5rem;">ACAD三阶段课程 · 共90课时</p>
+        <p style="color: rgba(240, 237, 232, 0.5); font-size: 0.9rem; margin-top: 1rem; max-width: 700px;">
+          Today's trial is your child's first step into a complete 3-part journey — <strong style="color: #F0EDE8;">45 sessions · 90 hours</strong> of progressive communication training. Each step builds on the last, and every step ends with a live capstone performance.
+        </p>
+      </div>
+
+      <!-- Journey Image -->
+      <div class="reveal-scale mb-16 relative">
+        <div style="border-radius: 1rem; overflow: hidden; position: relative; border: 1px solid rgba(74, 158, 255, 0.12); box-shadow: 0 0 60px rgba(74, 158, 255, 0.06), 0 40px 80px rgba(0, 0, 0, 0.5); max-height: 360px;">
+          <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663628649363/TpgXn7rmUL8AtPoBRmKF84/journey-path-XmY8RYqsLohgchfcJH2gCu.webp" alt="ACAD 3-Step Journey" style="width: 100%; object-fit: cover; max-height: 360px; object-position: center;" />
+          <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(13, 15, 20, 0.98) 100%);"></div>
+        </div>
+      </div>
+
+      <!-- Step Cards -->
+      <div class="grid md:grid-cols-3 gap-6 mb-16">
+        <div class="reveal-up relative rounded-xl p-7 transition-all duration-500" style="background: linear-gradient(135deg, rgba(201, 168, 76, 0.1) 0%, rgba(17, 19, 24, 0.9) 100%); border: 1px solid rgba(201, 168, 76, 0.35); box-shadow: 0 0 40px rgba(201, 168, 76, 0.08);">
+          <div style="position: absolute; -top: 0.75rem; left: 1.5rem; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.55rem; font-weight: 600; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.15em; background: linear-gradient(135deg, #C9A84C, #E8C96A); color: #0A0B0E;">← TODAY'S TRIAL · 今日体验课入口</div>
+          <div class="flex items-center gap-3 mb-5">
+            <div style="width: 2.5rem; height: 2.5rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #C9A84C; background: rgba(201, 168, 76, 0.15); border: 1px solid rgba(201, 168, 76, 0.35);">1</div>
+            <div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: #C9A84C; opacity: 0.7; letter-spacing: 0.1em;">15 SESSIONS · 30 HOURS</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; color: rgba(240, 237, 232, 0.35); letter-spacing: 0.08em;">第一阶段</div>
+            </div>
+          </div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.25rem; color: #F0EDE8; font-weight: 600; margin-bottom: 0.2rem;">Public Speaking</h3>
+          <p style="color: #C9A84C; font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.75;">公众演讲</p>
+          <div style="height: 1px; margin-bottom: 1rem; background: linear-gradient(90deg, #C9A84C30, transparent);"></div>
+          <p style="color: rgba(240, 237, 232, 0.6); font-size: 0.85rem; line-height: 1.7; margin-bottom: 0.75rem;">Structure, delivery, and presence. Students master the ACE framework, vocal control, eye contact, and how to command a room with confidence on any topic.</p>
+          <p style="color: rgba(240, 237, 232, 0.3); font-size: 0.78rem; line-height: 1.65; margin-bottom: 1rem;">结构、表达与气场。学生掌握ACE框架、声音控制、眼神交流，以及如何自信地在任何话题上主导全场。</p>
+          <div style="display: flex; align-items: flex-start; gap: 0.5rem; padding: 0.75rem; border-radius: 0.5rem; background: rgba(201, 168, 76, 0.08); border: 1px solid rgba(201, 168, 76, 0.18);">
+            <span style="font-size: 0.9rem;">🎤</span>
+            <div>
+              <p style="color: #C9A84C; font-size: 0.75rem; line-height: 1.4; opacity: 0.85;">Ends with a live public capstone presentation</p>
+              <p style="color: rgba(240, 237, 232, 0.3); font-size: 0.68rem; margin-top: 2px;">结业时进行公开演讲展示</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal-up relative rounded-xl p-7 transition-all duration-500" style="background: rgba(17, 19, 24, 0.5); border: 1px solid rgba(255, 255, 255, 0.06); transition-delay: 0.15s;">
+          <div class="flex items-center gap-3 mb-5">
+            <div style="width: 2.5rem; height: 2.5rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #4A9EFF; background: rgba(74, 158, 255, 0.15); border: 1px solid rgba(74, 158, 255, 0.35);">2</div>
+            <div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: #4A9EFF; opacity: 0.7; letter-spacing: 0.1em;">15 SESSIONS · 30 HOURS</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; color: rgba(240, 237, 232, 0.35); letter-spacing: 0.08em;">第二阶段</div>
+            </div>
+          </div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.25rem; color: #F0EDE8; font-weight: 600; margin-bottom: 0.2rem;">Debate</h3>
+          <p style="color: #4A9EFF; font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.75;">辩论</p>
+          <div style="height: 1px; margin-bottom: 1rem; background: linear-gradient(90deg, #4A9EFF30, transparent);"></div>
+          <p style="color: rgba(240, 237, 232, 0.6); font-size: 0.85rem; line-height: 1.7; margin-bottom: 0.75rem;">Live argumentation under pressure. Students learn structured debate formats, rebuttal strategy, and cross-examination — thinking and speaking at the same time.</p>
+          <p style="color: rgba(240, 237, 232, 0.3); font-size: 0.78rem; line-height: 1.65; margin-bottom: 1rem;">高压下的即兴论辩。学生学习正式辩论格式、反驳策略和交叉质询——边思考、边开口。</p>
+          <div style="display: flex; align-items: flex-start; gap: 0.5rem; padding: 0.75rem; border-radius: 0.5rem; background: rgba(74, 158, 255, 0.08); border: 1px solid rgba(74, 158, 255, 0.18);">
+            <span style="font-size: 0.9rem;">🏆</span>
+            <div>
+              <p style="color: #4A9EFF; font-size: 0.75rem; line-height: 1.4; opacity: 0.85;">Ends with a live debate tournament</p>
+              <p style="color: rgba(240, 237, 232, 0.3); font-size: 0.68rem; margin-top: 2px;">结业时进行现场辩论赛</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal-up relative rounded-xl p-7 transition-all duration-500" style="background: rgba(17, 19, 24, 0.5); border: 1px solid rgba(255, 255, 255, 0.06); transition-delay: 0.3s;">
+          <div class="flex items-center gap-3 mb-5">
+            <div style="width: 2.5rem; height: 2.5rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #C9A84C; background: rgba(201, 168, 76, 0.15); border: 1px solid rgba(201, 168, 76, 0.35);">3</div>
+            <div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: #C9A84C; opacity: 0.7; letter-spacing: 0.1em;">15 SESSIONS · 30 HOURS</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; color: rgba(240, 237, 232, 0.35); letter-spacing: 0.08em;">第三阶段</div>
+            </div>
+          </div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.25rem; color: #F0EDE8; font-weight: 600; margin-bottom: 0.2rem;">Capstone & Leadership</h3>
+          <p style="color: #C9A84C; font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.75;">领袖展示与毕业答辩</p>
+          <div style="height: 1px; margin-bottom: 1rem; background: linear-gradient(90deg, #C9A84C30, transparent);"></div>
+          <p style="color: rgba(240, 237, 232, 0.6); font-size: 0.85rem; line-height: 1.7; margin-bottom: 0.75rem;">Students design and deliver a full-length original presentation on a real-world topic — then defend it live before an audience and a panel. The university-admissions standard.</p>
+          <p style="color: rgba(240, 237, 232, 0.3); font-size: 0.78rem; line-height: 1.65; margin-bottom: 1rem;">学生围绕真实议题自主设计并完成完整演讲，随后在观众和评审面前进行现场答辩——达到大学申请标准。</p>
+          <div style="display: flex; align-items: flex-start; gap: 0.5rem; padding: 0.75rem; border-radius: 0.5rem; background: rgba(201, 168, 76, 0.08); border: 1px solid rgba(201, 168, 76, 0.18);">
+            <span style="font-size: 0.9rem;">🌟</span>
+            <div>
+              <p style="color: #C9A84C; font-size: 0.75rem; line-height: 1.4; opacity: 0.85;">Ends with a public capstone in front of a live audience</p>
+              <p style="color: rgba(240, 237, 232, 0.3); font-size: 0.68rem; margin-top: 2px;">结业时举行对外公开的领袖级演讲展示</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="reveal-up grid grid-cols-3 gap-6 rounded-2xl p-8" style="background: linear-gradient(135deg, rgba(17, 19, 24, 0.8) 0%, rgba(10, 11, 14, 0.9) 100%); border: 1px solid rgba(201, 168, 76, 0.12);">
+        <div style="text-align: center;">
+          <div class="stat-mono font-bold text-gold-gradient" style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1;">45</div>
+          <div style="color: rgba(240, 237, 232, 0.6); font-size: 0.8rem; margin-top: 0.5rem; font-weight: 500;">Total Sessions</div>
+          <div style="color: rgba(201, 168, 76, 0.4); font-size: 0.7rem; margin-top: 2px;">总节数</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="stat-mono font-bold text-gold-gradient" style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1;">90</div>
+          <div style="color: rgba(240, 237, 232, 0.6); font-size: 0.8rem; margin-top: 0.5rem; font-weight: 500;">Total Hours</div>
+          <div style="color: rgba(201, 168, 76, 0.4); font-size: 0.7rem; margin-top: 2px;">总课时</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="stat-mono font-bold text-gold-gradient" style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1;">3</div>
+          <div style="color: rgba(240, 237, 232, 0.6); font-size: 0.8rem; margin-top: 0.5rem; font-weight: 500;">Live Capstones</div>
+          <div style="color: rgba(201, 168, 76, 0.4); font-size: 0.7rem; margin-top: 2px;">公开展示场次</div>
+        </div>
+      </div>
+
+      <p class="reveal-up text-center mt-6" style="color: rgba(240, 237, 232, 0.35); font-size: 0.8rem;">
+        Each step is a complete module. Students grow one phase at a time — and every phase ends with a public performance that families are invited to attend.
+        <br />
+        <span style="color: rgba(201, 168, 76, 0.3);">每个阶段均为独立模块，循序渐进。每阶段结业时举行公开展示，家长受邀出席观看。</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section id="cta" style="position: relative; padding-top: 8rem; padding-bottom: 8rem; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background-image: url('https://d2xsxph8kpxj0f.cloudfront.net/310519663628649363/TpgXn7rmUL8AtPoBRmKF84/cta-bg-9K6VXvH2gMVZxM4Xcn646t.webp'); background-size: cover; background-position: center; opacity: 0.9;"></div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10, 11, 14, 0.7) 0%, rgba(10, 11, 14, 0.4) 50%, rgba(10, 11, 14, 0.8) 100%);"></div>
+
+    <div class="container relative z-10 text-center">
+      <div class="reveal-up flex items-center justify-center gap-3 mb-8">
+        <div class="hairline-gold" style="width: 40px;"></div>
+        <span class="section-number">06 · READY TO BEGIN · 准备好开始了吗</span>
+        <div class="hairline-gold" style="width: 40px;"></div>
+      </div>
+
+      <div class="reveal-up">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 7vw, 5.5rem); color: #F0EDE8; font-weight: 800; line-height: 1.1; margin-bottom: 0.5rem;">
+          Ready to Begin <span class="text-gold-gradient">Step 1?</span>
+        </h2>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 4vw, 3rem); color: rgba(240, 237, 232, 0.5); font-weight: 400; line-height: 1.2; margin-bottom: 2rem; font-style: italic;">
+          准备好开始第一阶段了吗？
+        </h2>
+      </div>
+
+      <div class="reveal-up max-w-2xl mx-auto mb-12" style="transition-delay: 0.2s;">
+        <p style="color: rgba(240, 237, 232, 0.65); font-size: 1rem; line-height: 1.8; margin-bottom: 0.75rem;">
+          Enroll in the Public Speaking track — 15 sessions, 30 hours, one live capstone performance.
+          Fill in your details and we'll be in touch within 24 hours.
+        </p>
+        <p style="color: rgba(201, 168, 76, 0.5); font-size: 0.88rem; line-height: 1.7;">
+          报名公众演讲课程——15节课，30课时，一场公开演讲展示。填写信息后，我们将在24小时内与您联系。
+        </p>
+      </div>
+
+      <div class="reveal-scale" style="transition-delay: 0.3s;">
+        <a href="https://wa.me/66123456789" class="btn-gold inline-flex items-center gap-3 px-10 py-4 rounded-full text-sm font-bold tracking-widest uppercase">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          JOIN THE ACAD TRACK · 加入课程 · 立即报名
+        </a>
+      </div>
+
+      <div class="reveal-up mt-10 flex items-center justify-center gap-6 flex-wrap" style="transition-delay: 0.4s;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: rgba(240, 237, 232, 0.25); letter-spacing: 0.15em;">ISB</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: rgba(240, 237, 232, 0.25); letter-spacing: 0.15em;">NIST</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: rgba(240, 237, 232, 0.25); letter-spacing: 0.15em;">Harrow</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: rgba(240, 237, 232, 0.25); letter-spacing: 0.15em;">Prem</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: rgba(240, 237, 232, 0.25); letter-spacing: 0.15em;">Shrewsbury</span>
+      </div>
+      <p style="color: rgba(240, 237, 232, 0.2); font-size: 0.7rem; margin-top: 0.5rem; letter-spacing: 0.1em;">GRADES 5–12 · 五至十二年级 · CHIANG MAI, THAILAND</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="position: relative; padding-top: 4rem; padding-bottom: 4rem; background: #070809; border-top: 1px solid rgba(201, 168, 76, 0.08);">
+    <div class="container">
+      <div class="grid md:grid-cols-3 gap-10">
+        <!-- Brand -->
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div style="width: 2rem; height: 2rem; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; background: rgba(201, 168, 76, 0.1); border: 1px solid rgba(201, 168, 76, 0.2);">
+              <span style="color: #C9A84C; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.9rem;">G</span>
+            </div>
+            <div>
+              <div style="color: #F0EDE8; font-family: 'Playfair Display', serif; font-weight: 600; font-size: 0.9rem;">Global Success Center</div>
+              <div style="color: rgba(201, 168, 76, 0.5); font-size: 0.6rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em;">国际精英学术中心</div>
+            </div>
+          </div>
+          <p style="color: rgba(240, 237, 232, 0.35); font-size: 0.8rem; line-height: 1.7;">
+            ACAD Track · 学术表达与辩论课程<br />Grades 5–12 · 五至十二年级<br />Chiang Mai, Thailand · 泰国清迈
+          </p>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: rgba(201, 168, 76, 0.5); letter-spacing: 0.2em; margin-bottom: 1rem;">CONTACT · 联系我们</h4>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <div class="flex items-center gap-3">
+              <div style="width: 1.5rem; height: 1.5rem; border-radius: 0.25rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: rgba(74, 158, 255, 0.1); border: 1px solid rgba(74, 158, 255, 0.15);">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4A9EFF" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+              </div>
+              <div>
+                <span style="color: rgba(240, 237, 232, 0.4); font-size: 0.7rem; font-family: 'JetBrains Mono', monospace;">WeChat · 微信</span>
+                <span style="color: #F0EDE8; font-size: 0.85rem; margin-left: 0.5rem;">wongrat1216</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div style="width: 1.5rem; height: 1.5rem; border-radius: 0.25rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: rgba(201, 168, 76, 0.1); border: 1px solid rgba(201, 168, 76, 0.15);">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.92 16.92z" />
+                </svg>
+              </div>
+              <div>
+                <span style="color: rgba(240, 237, 232, 0.4); font-size: 0.7rem; font-family: 'JetBrains Mono', monospace;">LINE</span>
+                <span style="color: #F0EDE8; font-size: 0.85rem; margin-left: 0.5rem;">johnwong1216</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Schools -->
+        <div>
+          <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: rgba(201, 168, 76, 0.5); letter-spacing: 0.2em; margin-bottom: 1rem;">INTERNATIONAL SCHOOLS · 国际学校课程</h4>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            <span style="padding: 0.25rem 0.75rem; border-radius: 9999px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); color: rgba(240, 237, 232, 0.45); font-size: 0.75rem; font-family: 'DM Sans', sans-serif;">ISB</span>
+            <span style="padding: 0.25rem 0.75rem; border-radius: 9999px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); color: rgba(240, 237, 232, 0.45); font-size: 0.75rem; font-family: 'DM Sans', sans-serif;">NIST</span>
+            <span style="padding: 0.25rem 0.75rem; border-radius: 9999px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); color: rgba(240, 237, 232, 0.45); font-size: 0.75rem; font-family: 'DM Sans', sans-serif;">Harrow</span>
+            <span style="padding: 0.25rem 0.75rem; border-radius: 9999px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); color: rgba(240, 237, 232, 0.45); font-size: 0.75rem; font-family: 'DM Sans', sans-serif;">Prem</span>
+            <span style="padding: 0.25rem 0.75rem; border-radius: 9999px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); color: rgba(240, 237, 232, 0.45); font-size: 0.75rem; font-family: 'DM Sans', sans-serif;">Shrewsbury</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 3rem; padding-top: 1.5rem; display: flex; flex-direction: column; md:flex-row; align-items: center; justify-content: space-between; gap: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+        <p style="color: rgba(240, 237, 232, 0.2); font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em;">© 2025 GLOBAL SUCCESS CENTER · ALL RIGHTS RESERVED</p>
+        <p style="color: rgba(201, 168, 76, 0.25); font-size: 0.7rem; font-family: 'JetBrains Mono', monospace;">ACAD TRACK · TRIAL SESSION REPORT · 体验课报告</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        navbar.style.background = 'rgba(10, 11, 14, 0.92)';
+        navbar.style.backdropFilter = 'blur(20px)';
+        navbar.style.borderBottom = '1px solid rgba(201, 168, 76, 0.08)';
+      } else {
+        navbar.style.background = 'transparent';
+        navbar.style.backdropFilter = 'none';
+        navbar.style.borderBottom = '1px solid transparent';
+      }
+    }, { passive: true });
+
+    // Parallax effect on hero background
+    const heroSection = document.querySelector('#hero');
+    const heroBg = heroSection.querySelector('.hero-bg');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      heroBg.style.transform = `translateY(${scrollY * 0.4}px)`;
+    }, { passive: true });
+
+    // Mouse parallax on hero floaters
+    const floaters = document.querySelectorAll('.hero-floater');
+    window.addEventListener('mousemove', (e) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      const x = (clientX / innerWidth - 0.5) * 20;
+      const y = (clientY / innerHeight - 0.5) * 20;
+      floaters.forEach((el, i) => {
+        const factor = (i + 1) * 0.5;
+        el.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+      });
+    });
+
+    // Scroll reveal observer
+    const revealClasses = ['.reveal-up', '.reveal-left', '.reveal-right', '.reveal-scale'];
+    const selector = revealClasses.join(', ');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    document.querySelectorAll(selector).forEach((el) => {
+      observer.observe(el);
+    });
+
+    // Smooth scroll for CTA button
+    document.querySelectorAll('a[href="#cta"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('cta').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
 </body>
 </html>
